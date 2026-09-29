@@ -1,0 +1,6 @@
+{
+  "name": "NEL SCOUT - Gaming Discovery Platform",
+  "description": "Scout your next game. Discover free online games, explore new experiences, and find games similar to popular Roblox experiences and top multiplayer hits.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
