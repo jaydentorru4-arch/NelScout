@@ -1,6 +1,7 @@
 import { Game } from '../types/game';
 import { GAMES } from './games';
 import { MORE_GAMES } from './moreGames';
+import { EXTRA_GAMES as ADDITIONAL_GAMES } from './extraGames';
 
 const EXTRA_GAMES: Game[] = [
   {
@@ -87,5 +88,5 @@ const EXTRA_GAMES: Game[] = [
   }
 ];
 
-export const ALL_GAMES: Game[] = [...GAMES, ...MORE_GAMES, ...EXTRA_GAMES];
+export const ALL_GAMES: Game[] = [...GAMES, ...MORE_GAMES, ...EXTRA_GAMES, ...ADDITIONAL_GAMES];
 export const TOTAL_GAMES_COUNT = ALL_GAMES.length;

@@ -25,7 +25,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
           <div className="md:col-span-2 space-y-4">
             <NelScoutLogo size="lg" />
             <p className="text-sm text-slate-300 max-w-md leading-relaxed mt-2">
-              <strong className="text-white">Scout your next game.</strong> Discover free online games, explore new experiences, and find games similar to popular Roblox experiences and top multiplayer hits.
+              <strong className="text-white">Scout your next game.</strong> Discover 100+ free online games, explore new standalone titles, and find games matching your favorite genres and playstyles.
             </p>
             <div className="flex items-center gap-2 text-xs text-slate-400 pt-2 font-mono">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
@@ -57,10 +57,10 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               </li>
               <li>
                 <button
-                  onClick={() => onSelectTab('roblox-alternatives')}
+                  onClick={() => onSelectTab('matcher')}
                   className="hover:text-blue-400 transition-colors cursor-pointer"
                 >
-                  Roblox Alternatives
+                  Game Matcher
                 </button>
               </li>
               <li>

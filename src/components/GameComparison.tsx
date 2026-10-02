@@ -13,7 +13,7 @@ export const GameComparison: React.FC<GameComparisonProps> = ({
   onPreview,
 }) => {
   const [gameAId, setGameAId] = useState<string>(allGames[0]?.id || 'fortnite');
-  const [gameBId, setGameBId] = useState<string>(allGames[1]?.id || 'roblox');
+  const [gameBId, setGameBId] = useState<string>(allGames[1]?.id || 'genshin-impact');
 
   const gameA = allGames.find((g) => g.id === gameAId) || allGames[0];
   const gameB = allGames.find((g) => g.id === gameBId) || allGames[1];
@@ -60,9 +60,9 @@ export const GameComparison: React.FC<GameComparisonProps> = ({
       valB: gameB.gameModes ? gameB.gameModes.join(', ') : 'Standard Campaign & Matches',
     },
     {
-      label: 'Roblox Parallels',
-      valA: gameA.similarRobloxGames.length > 0 ? gameA.similarRobloxGames.join(', ') : 'None',
-      valB: gameB.similarRobloxGames.length > 0 ? gameB.similarRobloxGames.join(', ') : 'None',
+      label: 'Key Gameplay Loops & Tags',
+      valA: gameA.tags.slice(0, 4).join(', '),
+      valB: gameB.tags.slice(0, 4).join(', '),
     },
   ];
 
@@ -70,10 +70,6 @@ export const GameComparison: React.FC<GameComparisonProps> = ({
     <div className="py-10 max-w-6xl mx-auto">
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/80 border border-blue-800 text-blue-400 text-xs font-mono font-bold mb-3">
-          <Layers className="w-3.5 h-3.5" />
-          <span>SIDE-BY-SIDE SCOUT ENGINE</span>
-        </div>
         <h2 className="text-3xl sm:text-4xl font-black text-white font-heading tracking-tight mb-2">
           GAME COMPARISON
         </h2>

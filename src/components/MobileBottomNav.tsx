@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, Gamepad2, Sparkles, Search, Heart } from 'lucide-react';
+import { Compass, Gamepad2, Layers, Search, Heart } from 'lucide-react';
 
 interface MobileBottomNavProps {
   currentTab: string;
@@ -17,7 +17,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   const items = [
     { id: 'discover', label: 'Discover', icon: Compass },
     { id: 'games', label: 'Games', icon: Gamepad2 },
-    { id: 'roblox-alternatives', label: 'Roblox', icon: Sparkles },
+    { id: 'matcher', label: 'Matcher', icon: Layers },
     { id: 'search', label: 'Search', icon: Search, isAction: true },
     { id: 'favorites', label: 'Favorites', icon: Heart, count: favoritesCount },
   ];

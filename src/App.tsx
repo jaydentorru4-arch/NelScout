@@ -19,7 +19,6 @@ import { Footer } from './components/Footer';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import {
   Flame,
-  Sparkles,
   Gamepad2,
   Clock,
   Heart,
@@ -68,6 +67,7 @@ export default function App() {
     priceType: 'all',
     multiplayer: 'all',
     sortBy: 'trending',
+    experienceFilter: undefined,
     robloxFilter: undefined,
   });
 
@@ -122,18 +122,20 @@ export default function App() {
         const matchesDesc = game.shortDescription.toLowerCase().includes(q);
         const matchesGenre = game.genres.some((g) => g.toLowerCase().includes(q));
         const matchesTag = game.tags.some((t) => t.toLowerCase().includes(q));
-        const matchesRoblox = game.similarRobloxGames.some((r) => r.toLowerCase().includes(q));
-        if (!matchesName && !matchesDesc && !matchesGenre && !matchesTag && !matchesRoblox) {
+        const matchesPlatform = game.platforms.some((p) => p.toLowerCase().includes(q));
+        if (!matchesName && !matchesDesc && !matchesGenre && !matchesTag && !matchesPlatform) {
           return false;
         }
       }
 
-      // Roblox filter
-      if (filters.robloxFilter) {
-        const matchesRoblox = game.similarRobloxGames.some(
-          (r) => r.toLowerCase() === filters.robloxFilter?.toLowerCase()
-        );
-        if (!matchesRoblox) return false;
+      // Experience & playstyle filter
+      if (filters.experienceFilter || filters.robloxFilter) {
+        const filterVal = (filters.experienceFilter || filters.robloxFilter || '').toLowerCase();
+        const matchesExp =
+          (game.similarRobloxGames || []).some((r) => r.toLowerCase().includes(filterVal)) ||
+          game.tags.some((t) => t.toLowerCase().includes(filterVal)) ||
+          game.genres.some((g) => g.toLowerCase().includes(filterVal));
+        if (!matchesExp) return false;
       }
 
       // Free Games Only Tab or price filter
@@ -205,13 +207,14 @@ export default function App() {
       priceType: 'all',
       multiplayer: 'all',
       sortBy: 'trending',
+      experienceFilter: undefined,
       robloxFilter: undefined,
     });
   };
 
-  const handleSelectRobloxFromSearch = (robloxName: string) => {
-    setFilters((prev) => ({ ...prev, robloxFilter: robloxName, searchQuery: '' }));
-    navigateToTab('roblox-alternatives');
+  const handleSelectExperienceFromSearch = (expName: string) => {
+    setFilters((prev) => ({ ...prev, experienceFilter: expName, robloxFilter: expName, searchQuery: '' }));
+    navigateToTab('matcher');
   };
 
   const handleSelectCategory = (genre: GenreType) => {
@@ -271,7 +274,8 @@ export default function App() {
                   value={filters.searchQuery}
                   onChange={(val) => setFilters((prev) => ({ ...prev, searchQuery: val }))}
                   onSelectGame={handleOpenPreview}
-                  onSelectRoblox={handleSelectRobloxFromSearch}
+                  onSelectExperience={handleSelectExperienceFromSearch}
+                  onSelectRoblox={handleSelectExperienceFromSearch}
                   allGames={ALL_GAMES}
                 />
               </div>
@@ -336,7 +340,7 @@ export default function App() {
               <TrendingCarousel
                 title="💎 HIDDEN GEMS"
                 subtitle="Underrated community favorites and creative masterpieces"
-                icon={<Sparkles className="w-5 h-5 text-indigo-400" />}
+                icon={<Gamepad2 className="w-5 h-5 text-indigo-400" />}
                 games={hiddenGems}
                 onPreview={handleOpenPreview}
                 onToggleFavorite={toggleFavorite}
@@ -415,7 +419,8 @@ export default function App() {
                 value={filters.searchQuery}
                 onChange={(val) => setFilters((prev) => ({ ...prev, searchQuery: val }))}
                 onSelectGame={handleOpenPreview}
-                onSelectRoblox={handleSelectRobloxFromSearch}
+                onSelectExperience={handleSelectExperienceFromSearch}
+                onSelectRoblox={handleSelectExperienceFromSearch}
                 allGames={ALL_GAMES}
               />
             </div>
@@ -457,15 +462,15 @@ export default function App() {
               </div>
             </div>
           </div>
-        ) : currentTab === 'roblox-alternatives' ? (
-          /* ROBLOX ALTERNATIVES TAB */
+        ) : (currentTab === 'matcher' || currentTab === 'roblox-alternatives') ? (
+          /* GAME ALTERNATIVES & PLAYSTYLES TAB */
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <RobloxAlternatives
               allGames={ALL_GAMES}
               onPreview={handleOpenPreview}
               onToggleFavorite={toggleFavorite}
               isFavorite={isFavorite}
-              initialSelectedRoblox={filters.robloxFilter}
+              initialSelectedExperience={filters.experienceFilter || filters.robloxFilter}
             />
           </div>
         ) : currentTab === 'categories' ? (
@@ -672,9 +677,13 @@ export default function App() {
                 setSearchModalOpen(false);
                 handleOpenPreview(game);
               }}
-              onSelectRoblox={(roblox) => {
+              onSelectExperience={(exp) => {
                 setSearchModalOpen(false);
-                handleSelectRobloxFromSearch(roblox);
+                handleSelectExperienceFromSearch(exp);
+              }}
+              onSelectRoblox={(exp) => {
+                setSearchModalOpen(false);
+                handleSelectExperienceFromSearch(exp);
               }}
               allGames={ALL_GAMES}
               autoFocus

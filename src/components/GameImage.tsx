@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Gamepad2, Skull, Crosshair, Car, Sparkles, Users, Wrench } from 'lucide-react';
+import { Gamepad2, Skull, Crosshair, Car, Compass, Users, Wrench } from 'lucide-react';
 import { GenreType } from '../types/game';
 
 interface GameImageProps {
@@ -87,7 +87,7 @@ export const GameImage: React.FC<GameImageProps> = ({
           gradient: 'from-blue-950 via-indigo-950 to-black',
           border: 'border-blue-900/40',
           textColor: 'text-blue-400',
-          icon: Sparkles,
+          icon: Compass,
         };
       case 'simulation':
       case 'roleplay':

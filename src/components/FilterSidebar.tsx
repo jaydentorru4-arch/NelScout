@@ -1,6 +1,6 @@
 import React from 'react';
 import { FilterState, GenreType, PlatformType, PriceType, MultiplayerType } from '../types/game';
-import { Filter, RotateCcw, Check, Sparkles } from 'lucide-react';
+import { Filter, RotateCcw, Check } from 'lucide-react';
 
 interface FilterSidebarProps {
   filters: FilterState;
@@ -84,7 +84,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
     filters.selectedPlatforms.length > 0 ||
     filters.priceType !== 'all' ||
     filters.multiplayer !== 'all' ||
-    Boolean(filters.robloxFilter);
+    Boolean(filters.robloxFilter || filters.experienceFilter);
 
   return (
     <div className="w-full rounded-2xl bg-[#0c1322] border border-[#18233c] p-5 space-y-6">

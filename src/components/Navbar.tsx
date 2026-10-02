@@ -12,7 +12,6 @@ import {
   Gamepad2,
   Flame,
   Award,
-  Sparkles,
   Grid,
 } from 'lucide-react';
 
@@ -39,7 +38,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const primaryLinks = [
     { id: 'discover', label: 'Discover', icon: Compass },
     { id: 'games', label: 'Games', icon: Gamepad2 },
-    { id: 'roblox-alternatives', label: 'Roblox Alternatives', icon: Sparkles },
+    { id: 'matcher', label: 'Game Matcher', icon: Layers },
     { id: 'trending', label: 'Trending', icon: Flame },
     { id: 'free-games', label: 'Free Games', icon: Award },
   ];
@@ -152,7 +151,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={onOpenSearch}
             className="flex items-center gap-2 px-2.5 sm:px-3 py-2 text-xs text-slate-300 bg-[#0e1627] hover:bg-[#18243c] border border-[#1b2742] hover:border-blue-500/40 rounded-xl transition-all cursor-pointer group shadow-sm"
-            title="Search games, genres, Roblox experiences..."
+            title="Search 100+ games, genres, tags..."
             aria-label="Search"
           >
             <Search className="w-4 h-4 text-blue-400 group-hover:text-blue-300" />
@@ -217,7 +216,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <div className="flex items-center gap-2">
                 <Search className="w-4 h-4 text-blue-400" />
-                <span>Search games or Roblox experiences...</span>
+                <span>Search 100+ games, genres, tags...</span>
               </div>
               <span className="text-[10px] font-mono text-slate-500">Tap to search</span>
             </button>

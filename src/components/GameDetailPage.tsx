@@ -13,7 +13,7 @@ import {
   Smartphone,
   ExternalLink,
   ShieldCheck,
-  Sparkles,
+  Gamepad2,
 } from 'lucide-react';
 
 interface GameDetailPageProps {
@@ -186,21 +186,18 @@ export const GameDetailPage: React.FC<GameDetailPageProps> = ({
               </div>
             )}
 
-            {/* Similar Roblox Experiences */}
-            {game.similarRobloxGames.length > 0 && (
-              <div className="p-6 rounded-3xl bg-blue-950/20 border border-blue-900/50">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-400 font-bold mb-2">
-                  <Sparkles className="w-4 h-4" />
-                  <span>Roblox Player Cross-Over Guide</span>
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">
-                  Similar to {game.similarRobloxGames.join(', ')}
-                </h3>
-                <p className="text-sm text-slate-300 leading-relaxed">
-                  Players coming from Roblox’s top titles will appreciate {game.name}’s comparable progression mechanics, social communities, and dedicated servers. It offers the same core thrill with dedicated optimization and deep mechanics.
-                </p>
+            {/* Gameplay Experience Highlights */}
+            <div className="p-6 rounded-3xl bg-blue-950/20 border border-blue-900/50">
+              <div className="text-xs font-mono uppercase tracking-wider text-blue-400 font-bold mb-2">
+                Standalone Gameplay Highlights
               </div>
-            )}
+              <h3 className="text-lg font-bold text-white mb-2">
+                {game.genres.join(' · ')} Experience
+              </h3>
+              <p className="text-sm text-slate-300 leading-relaxed">
+                {game.name} delivers a dedicated standalone gaming experience with high graphical fidelity, responsive netcode, and persistent multiplayer servers.
+              </p>
+            </div>
           </div>
 
           {/* Right Column: Specifications Card */}

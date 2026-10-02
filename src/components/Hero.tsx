@@ -65,7 +65,7 @@ export const Hero: React.FC<HeroProps> = ({
           {/* Quick Metrics & Trust Signals */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 border-t border-slate-800/80">
             <div>
-              <div className="text-2xl font-black text-white font-mono tabular-nums">70+</div>
+              <div className="text-2xl font-black text-white font-mono tabular-nums">100+</div>
               <div className="text-xs text-slate-400">Scouted Standalone Titles</div>
             </div>
             <div>

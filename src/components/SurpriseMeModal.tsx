@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Game } from '../types/game';
 import { GameImage } from './GameImage';
-import { Dices, Play, Eye, RotateCw, X, Sparkles, Trophy } from 'lucide-react';
+import { Dices, Play, Eye, RotateCw, X, Trophy } from 'lucide-react';
 import surpriseBackdrop from '../assets/images/surprise_me_backdrop_1790702544718.jpg';
 
 interface SurpriseMeModalProps {
@@ -123,10 +123,10 @@ export const SurpriseMeModal: React.FC<SurpriseMeModalProps> = ({
             </div>
           </div>
 
-          {selectedGame.similarRobloxGames.length > 0 && (
+          {selectedGame.tags.length > 0 && (
             <div className="mt-4 p-3 rounded-xl bg-blue-950/30 border border-blue-900/50 text-xs text-slate-300">
-              <span className="text-blue-400 font-mono font-bold">Roblox Match: </span>
-              Similar to <span className="font-semibold text-white">{selectedGame.similarRobloxGames.join(', ')}</span>
+              <span className="text-blue-400 font-mono font-bold">Key Tags: </span>
+              <span className="font-semibold text-white">{selectedGame.tags.join(', ')}</span>
             </div>
           )}
 

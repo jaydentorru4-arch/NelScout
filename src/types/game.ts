@@ -19,6 +19,8 @@ export type GenreType =
   | 'Party'
   | 'Adventure'
   | 'Strategy'
+  | 'Survival'
+  | 'Sports'
   | 'Open World';
 
 export interface Game {
@@ -39,7 +41,8 @@ export interface Game {
   multiplayer: MultiplayerType;
   multiplayerLabel?: string;
   playerCount: string;
-  similarRobloxGames: string[];
+  similarRobloxGames?: string[];
+  similarStyles?: string[];
   similarGames: string[]; // game IDs or names
   officialUrl: string;
   releaseDate: string;
@@ -54,14 +57,18 @@ export interface Game {
   rating?: number; // e.g. 4.8 / 5
 }
 
-export interface RobloxMapping {
-  robloxName: string;
-  robloxGenre: string;
+export interface ExperienceMapping {
+  experienceName: string;
+  genre: string;
   description: string;
-  robloxUrl?: string;
   recommendedGameIds: string[];
   tags: string[];
+  // Backwards compatibility
+  robloxName?: string;
+  robloxGenre?: string;
 }
+
+export type RobloxMapping = ExperienceMapping;
 
 export interface FilterState {
   searchQuery: string;
@@ -70,5 +77,6 @@ export interface FilterState {
   priceType: 'all' | 'free_only' | 'paid_only';
   multiplayer: 'all' | MultiplayerType;
   sortBy: 'trending' | 'rating' | 'newest' | 'name_asc';
+  experienceFilter?: string;
   robloxFilter?: string;
 }

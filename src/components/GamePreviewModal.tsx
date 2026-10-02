@@ -236,21 +236,15 @@ export const GamePreviewModal: React.FC<GamePreviewModalProps> = ({
                 </div>
               </div>
 
-              {/* Similar Roblox Games Highlight Box */}
-              {game.similarRobloxGames.length > 0 && (
-                <div className="p-4 rounded-2xl bg-blue-950/20 border border-blue-800/40">
-                  <div className="text-xs font-mono uppercase tracking-wider text-blue-400 font-bold mb-1">
-                    Roblox Players Experience Match
-                  </div>
-                  <p className="text-sm text-slate-300 leading-normal">
-                    If you love playing{' '}
-                    <span className="font-bold text-white">
-                      {game.similarRobloxGames.join(', ')}
-                    </span>{' '}
-                    on Roblox, {game.name} delivers a deeper, standalone gaming experience with comparable core loops and higher graphical fidelity.
-                  </p>
+              {/* Gameplay Style & Loop Highlights Box */}
+              <div className="p-4 rounded-2xl bg-blue-950/20 border border-blue-800/40">
+                <div className="text-xs font-mono uppercase tracking-wider text-blue-400 font-bold mb-1">
+                  Gameplay Style & Experience Match
                 </div>
-              )}
+                <p className="text-sm text-slate-300 leading-normal">
+                  {game.shortDescription} {game.name} delivers a dedicated standalone gaming experience with high graphical fidelity and persistent multiplayer.
+                </p>
+              </div>
             </div>
 
             {/* Right 1 Col: Quick Game Specs */}
