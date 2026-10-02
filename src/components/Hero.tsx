@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, Dices, ShieldCheck, Flame, Sparkles } from 'lucide-react';
+import { Compass, Dices, ShieldCheck, Flame } from 'lucide-react';
 import heroArtwork from '../assets/images/hero_gaming_scout_1790702521465.jpg';
 
 interface HeroProps {
@@ -31,12 +31,6 @@ export const Hero: React.FC<HeroProps> = ({
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
         <div className="max-w-3xl">
-          {/* Brand Tagline Header */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/70 border border-blue-800/60 text-blue-400 text-xs font-semibold mb-6 tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.25)]">
-            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-            <span>THE NEXT-GEN GAME DISCOVERY ENGINE</span>
-          </div>
-
           {/* Main Hero Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white font-heading leading-tight mb-6">
             SCOUT YOUR <br />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Game } from '../types/game';
 import { GameCard } from './GameCard';
+import { GameImage } from './GameImage';
 import {
   ArrowLeft,
   Play,
@@ -57,9 +58,11 @@ export const GameDetailPage: React.FC<GameDetailPageProps> = ({
 
       {/* Hero Artwork Banner */}
       <div className="relative h-[380px] sm:h-[480px] w-full overflow-hidden bg-slate-950">
-        <img
+        <GameImage
           src={game.bannerImage || game.coverImage}
           alt={game.name}
+          genre={game.genres[0]}
+          gameName={game.name}
           className="w-full h-full object-cover object-center opacity-65"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-[#060913]/60 to-transparent" />
@@ -132,9 +135,11 @@ export const GameDetailPage: React.FC<GameDetailPageProps> = ({
 
                 {/* Main Selected Image */}
                 <div className="relative aspect-video rounded-2xl overflow-hidden bg-slate-900 border border-[#1b2742] mb-3 shadow-xl">
-                  <img
+                  <GameImage
                     src={selectedScreenshot}
                     alt={`${game.name} preview`}
+                    genre={game.genres[0]}
+                    gameName={game.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -151,7 +156,12 @@ export const GameDetailPage: React.FC<GameDetailPageProps> = ({
                           : 'border-transparent opacity-60 hover:opacity-100'
                       }`}
                     >
-                      <img src={shot} alt="thumbnail" className="w-full h-full object-cover" />
+                      <GameImage
+                        src={shot}
+                        alt="thumbnail"
+                        genre={game.genres[0]}
+                        className="w-full h-full object-cover"
+                      />
                     </button>
                   ))}
                 </div>

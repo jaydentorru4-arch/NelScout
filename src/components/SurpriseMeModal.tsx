@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Game } from '../types/game';
+import { GameImage } from './GameImage';
 import { Dices, Play, Eye, RotateCw, X, Sparkles, Trophy } from 'lucide-react';
 import surpriseBackdrop from '../assets/images/surprise_me_backdrop_1790702544718.jpg';
 
@@ -83,13 +84,19 @@ export const SurpriseMeModal: React.FC<SurpriseMeModalProps> = ({
         {/* Content Body */}
         <div className="p-6">
           <div className="flex gap-4 items-start">
-            <img
-              src={selectedGame.coverImage}
-              alt={selectedGame.name}
-              className={`w-28 h-28 rounded-2xl object-cover border border-[#1e2d4d] shadow-lg shrink-0 transition-transform ${
+            <div
+              className={`w-28 h-28 rounded-2xl overflow-hidden border border-[#1e2d4d] shadow-lg shrink-0 transition-transform ${
                 isRolling ? 'scale-95 opacity-70 blur-[1px]' : 'scale-100 opacity-100'
               }`}
-            />
+            >
+              <GameImage
+                src={selectedGame.coverImage}
+                alt={selectedGame.name}
+                genre={selectedGame.genres[0]}
+                gameName={selectedGame.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
 
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-1">

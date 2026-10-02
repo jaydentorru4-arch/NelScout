@@ -7,6 +7,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { SearchBar } from './components/SearchBar';
 import { GameCard } from './components/GameCard';
+import { GameImage } from './components/GameImage';
 import { GamePreviewModal } from './components/GamePreviewModal';
 import { GameDetailPage } from './components/GameDetailPage';
 import { RobloxAlternatives } from './components/RobloxAlternatives';
@@ -15,6 +16,7 @@ import { FilterSidebar } from './components/FilterSidebar';
 import { GameComparison } from './components/GameComparison';
 import { SurpriseMeModal } from './components/SurpriseMeModal';
 import { Footer } from './components/Footer';
+import { MobileBottomNav } from './components/MobileBottomNav';
 import {
   Flame,
   Sparkles,
@@ -237,7 +239,7 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1">
+      <main className="flex-1 pb-16 lg:pb-0">
         {/* GAME DETAIL PAGE */}
         {currentTab === 'game-detail' && activeGame ? (
           <GameDetailPage
@@ -288,11 +290,15 @@ export default function App() {
                         onClick={() => handleOpenPreview(game)}
                         className="w-44 shrink-0 rounded-xl bg-[#0c1322] border border-[#18233c] hover:border-blue-500/50 p-2.5 transition-colors cursor-pointer group"
                       >
-                        <img
-                          src={game.coverImage}
-                          alt={game.name}
-                          className="w-full h-24 rounded-lg object-cover bg-slate-900 mb-2"
-                        />
+                        <div className="w-full h-24 rounded-lg overflow-hidden mb-2">
+                          <GameImage
+                            src={game.coverImage}
+                            alt={game.name}
+                            genre={game.genres[0]}
+                            gameName={game.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
                         <div className="text-xs font-bold text-white group-hover:text-blue-400 truncate">
                           {game.name}
                         </div>
@@ -701,6 +707,13 @@ export default function App() {
           </div>
         </div>
       )}
+      {/* Mobile Bottom Thumb Navigation */}
+      <MobileBottomNav
+        currentTab={currentTab}
+        onSelectTab={navigateToTab}
+        onOpenSearch={() => setSearchModalOpen(true)}
+        favoritesCount={favoritesCount}
+      />
     </div>
   );
 }

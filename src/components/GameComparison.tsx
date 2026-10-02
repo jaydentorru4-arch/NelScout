@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Game } from '../types/game';
+import { GameImage } from './GameImage';
 import { Layers, ArrowLeftRight, Check, Play, ExternalLink } from 'lucide-react';
 
 interface GameComparisonProps {
@@ -133,11 +134,15 @@ export const GameComparison: React.FC<GameComparisonProps> = ({
       <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-6">
         {/* Card Game A */}
         <div className="p-5 rounded-2xl bg-[#0a101d] border border-blue-900/40 text-center flex flex-col items-center">
-          <img
-            src={gameA.coverImage}
-            alt={gameA.name}
-            className="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl object-cover border border-slate-700/60 shadow-lg mb-3"
-          />
+          <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border border-slate-700/60 shadow-lg mb-3">
+            <GameImage
+              src={gameA.coverImage}
+              alt={gameA.name}
+              genre={gameA.genres[0]}
+              gameName={gameA.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
           <h3 className="text-lg sm:text-xl font-black text-white font-heading">{gameA.name}</h3>
           <div className="mt-3 flex flex-wrap gap-2 justify-center">
             <button
@@ -160,11 +165,15 @@ export const GameComparison: React.FC<GameComparisonProps> = ({
 
         {/* Card Game B */}
         <div className="p-5 rounded-2xl bg-[#0a101d] border border-indigo-900/40 text-center flex flex-col items-center">
-          <img
-            src={gameB.coverImage}
-            alt={gameB.name}
-            className="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl object-cover border border-slate-700/60 shadow-lg mb-3"
-          />
+          <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border border-slate-700/60 shadow-lg mb-3">
+            <GameImage
+              src={gameB.coverImage}
+              alt={gameB.name}
+              genre={gameB.genres[0]}
+              gameName={gameB.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
           <h3 className="text-lg sm:text-xl font-black text-white font-heading">{gameB.name}</h3>
           <div className="mt-3 flex flex-wrap gap-2 justify-center">
             <button

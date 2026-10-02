@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Search, X, Sparkles, Gamepad2, ArrowRight } from 'lucide-react';
 import { Game } from '../types/game';
+import { GameImage } from './GameImage';
 import { ROBLOX_MAPPINGS } from '../data/robloxMappings';
 
 interface SearchBarProps {
@@ -174,11 +175,15 @@ export const SearchBar: React.FC<SearchBarProps> = ({
                     }}
                     className="w-full flex items-center gap-3 p-2 rounded-xl hover:bg-slate-800/60 transition-colors text-left group cursor-pointer"
                   >
-                    <img
-                      src={game.coverImage}
-                      alt={game.name}
-                      className="w-12 h-12 rounded-lg object-cover bg-slate-900 shrink-0 border border-slate-700/50"
-                    />
+                    <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 border border-slate-700/50">
+                      <GameImage
+                        src={game.coverImage}
+                        alt={game.name}
+                        genre={game.genres[0]}
+                        gameName={game.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
                         <span className="text-sm font-bold text-white group-hover:text-blue-400 truncate">

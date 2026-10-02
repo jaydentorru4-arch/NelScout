@@ -58,6 +58,7 @@ export interface RobloxMapping {
   robloxName: string;
   robloxGenre: string;
   description: string;
+  robloxUrl?: string;
   recommendedGameIds: string[];
   tags: string[];
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Game } from '../types/game';
 import { ROBLOX_MAPPINGS } from '../data/robloxMappings';
 import { GameCard } from './GameCard';
-import { Sparkles, ArrowRight, Gamepad2 } from 'lucide-react';
+import { ArrowRight, Gamepad2 } from 'lucide-react';
 import bannerImg from '../assets/images/roblox_alternatives_banner_1790702533814.jpg';
 
 interface RobloxAlternativesProps {
@@ -46,11 +46,6 @@ export const RobloxAlternatives: React.FC<RobloxAlternativesProps> = ({
         </div>
 
         <div className="relative z-10 p-6 sm:p-10 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/80 border border-blue-800/80 text-blue-400 text-xs font-mono font-bold mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>ROBLOX CROSS-OVER DISCOVERY HUB</span>
-          </div>
-
           <h2 className="text-3xl sm:text-4xl font-black text-white font-heading tracking-tight mb-3">
             ROBLOX ALTERNATIVES
           </h2>
@@ -102,10 +97,20 @@ export const RobloxAlternatives: React.FC<RobloxAlternativesProps> = ({
             <p className="text-slate-300 text-sm">{activeMapping.description}</p>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="text-xs text-slate-400">Scouted alternatives:</span>
-            <span className="px-2.5 py-1 rounded-lg bg-blue-950 border border-blue-800 text-blue-300 text-xs font-mono font-bold">
-              {recommendedGames.length} Games
+          <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+            {activeMapping.robloxUrl && (
+              <a
+                href={activeMapping.robloxUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 border border-slate-700 transition-colors"
+              >
+                <span>Play on Roblox</span>
+                <span className="text-slate-400">↗</span>
+              </a>
+            )}
+            <span className="px-2.5 py-1.5 rounded-xl bg-blue-950 border border-blue-800 text-blue-300 text-xs font-mono font-bold">
+              {recommendedGames.length} Alternatives
             </span>
           </div>
         </div>

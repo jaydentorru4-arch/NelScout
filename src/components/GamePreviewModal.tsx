@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Game } from '../types/game';
+import { GameImage } from './GameImage';
 import {
   X,
   Play,
@@ -84,9 +85,11 @@ export const GamePreviewModal: React.FC<GamePreviewModalProps> = ({
               allowFullScreen
             />
           ) : (
-            <img
+            <GameImage
               src={game.screenshots[selectedScreenshotIndex] || game.bannerImage}
               alt={`${game.name} screenshot`}
+              genre={game.genres[0]}
+              gameName={game.name}
               className="w-full h-full object-cover"
             />
           )}
@@ -136,7 +139,12 @@ export const GamePreviewModal: React.FC<GamePreviewModalProps> = ({
                     : 'border-transparent opacity-60 hover:opacity-100'
                 }`}
               >
-                <img src={shot} alt="thumbnail" className="w-full h-full object-cover" />
+                <GameImage
+                  src={shot}
+                  alt="thumbnail"
+                  genre={game.genres[0]}
+                  className="w-full h-full object-cover"
+                />
               </button>
             ))}
           </div>
@@ -314,11 +322,15 @@ export const GamePreviewModal: React.FC<GamePreviewModalProps> = ({
                     onClick={() => onSelectGame(simGame)}
                     className="flex items-center gap-3 p-3 rounded-xl bg-[#0e1627] hover:bg-[#18253e] border border-[#1b2742] transition-colors cursor-pointer group"
                   >
-                    <img
-                      src={simGame.coverImage}
-                      alt={simGame.name}
-                      className="w-14 h-14 rounded-lg object-cover bg-slate-900 shrink-0"
-                    />
+                    <div className="w-14 h-14 rounded-lg overflow-hidden shrink-0">
+                      <GameImage
+                        src={simGame.coverImage}
+                        alt={simGame.name}
+                        genre={simGame.genres[0]}
+                        gameName={simGame.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                     <div className="min-w-0">
                       <div className="text-sm font-bold text-white group-hover:text-blue-400 truncate">
                         {simGame.name}

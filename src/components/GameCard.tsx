@@ -1,5 +1,6 @@
 import React from 'react';
 import { Game } from '../types/game';
+import { GameImage } from './GameImage';
 import { Heart, Play, Eye, Monitor, Smartphone, Gamepad, Globe, Users } from 'lucide-react';
 
 interface GameCardProps {
@@ -34,10 +35,11 @@ export const GameCard: React.FC<GameCardProps> = ({
     <div className="group relative flex flex-col justify-between rounded-2xl bg-[#0c1322] border border-[#18233c] hover:border-blue-600/60 overflow-hidden shadow-lg hover:shadow-[0_8px_30px_rgba(29,78,216,0.22)] transition-all duration-300 transform hover:-translate-y-1">
       {/* Artwork Section */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-900 cursor-pointer" onClick={() => onPreview(game)}>
-        <img
+        <GameImage
           src={game.coverImage}
           alt={game.name}
-          loading="lazy"
+          genre={game.genres[0]}
+          gameName={game.name}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
 
