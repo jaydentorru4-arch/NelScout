@@ -321,31 +321,6 @@ export default function App() {
                 isFavorite={isFavorite}
               />
 
-              {/* Roblox Alternatives Spotlight Card */}
-              <div className="my-12 p-8 rounded-3xl bg-gradient-to-r from-blue-950/60 via-[#0e172a] to-[#0c1322] border border-blue-800/40 relative overflow-hidden">
-                <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-                  <div className="max-w-2xl">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/60 text-blue-300 text-xs font-mono font-bold mb-3">
-                      <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-                      <span>RECOMMENDED FOR ROBLOX FANS</span>
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl font-black text-white font-heading tracking-tight mb-2">
-                      Play Games Like Blox Fruits, Brookhaven & DOORS
-                    </h3>
-                    <p className="text-slate-300 text-sm leading-relaxed">
-                      Scout dedicated standalone games with deeper mechanics, stunning graphics, and multiplayer servers tailored for fans of Roblox experiences.
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => navigateToTab('roblox-alternatives')}
-                    className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all cursor-pointer shrink-0"
-                  >
-                    <span>Open Roblox Matrix</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-
               {/* Popular Free Games Horizontal Carousel */}
               <TrendingCarousel
                 title="🟢 POPULAR FREE GAMES"

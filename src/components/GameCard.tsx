@@ -8,6 +8,7 @@ interface GameCardProps {
   onPreview: (game: Game) => void;
   onToggleFavorite: (id: string) => void;
   isFavorite: boolean;
+  showRobloxMatch?: boolean;
 }
 
 export const GameCard: React.FC<GameCardProps> = ({
@@ -15,6 +16,7 @@ export const GameCard: React.FC<GameCardProps> = ({
   onPreview,
   onToggleFavorite,
   isFavorite,
+  showRobloxMatch = false,
 }) => {
   // Helper to render platform icons cleanly
   const renderPlatformIcons = () => {
@@ -131,10 +133,10 @@ export const GameCard: React.FC<GameCardProps> = ({
             </span>
           </div>
 
-          {/* Similar to Roblox game badge */}
-          {game.similarRobloxGames.length > 0 && (
+          {/* Similar to Roblox game badge (only shown in Roblox Alternatives tab) */}
+          {showRobloxMatch && game.similarRobloxGames.length > 0 && (
             <div className="mt-3.5 pt-3 border-t border-[#18233c] text-xs">
-              <span className="text-slate-400">Similar to: </span>
+              <span className="text-slate-400">Alternative to: </span>
               <span className="font-semibold text-blue-300 hover:underline cursor-pointer" onClick={() => onPreview(game)}>
                 {game.similarRobloxGames[0]}
               </span>

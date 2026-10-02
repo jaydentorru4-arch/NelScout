@@ -125,6 +125,7 @@ export const RobloxAlternatives: React.FC<RobloxAlternativesProps> = ({
             onPreview={onPreview}
             onToggleFavorite={onToggleFavorite}
             isFavorite={isFavorite(game.id)}
+            showRobloxMatch={true}
           />
         ))}
       </div>
