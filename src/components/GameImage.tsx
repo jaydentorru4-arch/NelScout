@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Gamepad2, Skull, Crosshair, Car, Sparkles, Compass, Shield, Users, Wrench } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Gamepad2, Skull, Crosshair, Car, Sparkles, Users, Wrench } from 'lucide-react';
 import { GenreType } from '../types/game';
 
 interface GameImageProps {
@@ -11,17 +11,54 @@ interface GameImageProps {
   aspect?: string;
 }
 
+const GENRE_FALLBACK_IMAGES: Record<string, string> = {
+  shooter: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80',
+  rpg: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80',
+  action: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80',
+  sandbox: 'https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=800&q=80',
+  building: 'https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=800&q=80',
+  horror: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80',
+  racing: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80',
+  simulation: 'https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=800&q=80',
+  roleplay: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
+  party: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=800&q=80',
+  adventure: 'https://images.unsplash.com/photo-1589241062272-c0a000072dfa?auto=format&fit=crop&w=800&q=80',
+  mmo: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80',
+};
+
+const DEFAULT_GAMING_IMAGE = 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80';
+
 export const GameImage: React.FC<GameImageProps> = ({
   src,
   alt,
   className = '',
   genre = 'Action',
   gameName,
-  aspect = 'aspect-[16/10]',
 }) => {
-  const [hasError, setHasError] = useState(!src);
+  const [activeSrc, setActiveSrc] = useState<string | undefined>(src);
+  const [triedFallback, setTriedFallback] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
-  // Genre-based gradient and icon for resilient fallback
+  useEffect(() => {
+    setActiveSrc(src);
+    setTriedFallback(false);
+    setHasError(!src);
+  }, [src]);
+
+  const handleError = () => {
+    if (!triedFallback) {
+      const g = (genre || '').toLowerCase();
+      const fallbackUrl = GENRE_FALLBACK_IMAGES[g] || DEFAULT_GAMING_IMAGE;
+      setTriedFallback(true);
+      if (fallbackUrl !== activeSrc) {
+        setActiveSrc(fallbackUrl);
+        return;
+      }
+    }
+    setHasError(true);
+  };
+
+  // Genre-based gradient and icon for extreme edge-case fallback
   const getGenreTheme = (g: string) => {
     switch (g.toLowerCase()) {
       case 'horror':
@@ -81,15 +118,12 @@ export const GameImage: React.FC<GameImageProps> = ({
   const theme = getGenreTheme(genre);
   const IconComponent = theme.icon;
 
-  if (hasError || !src) {
+  if (hasError || !activeSrc) {
     return (
       <div
         className={`relative w-full h-full flex flex-col items-center justify-center p-4 bg-gradient-to-br ${theme.gradient} border ${theme.border} overflow-hidden select-none ${className}`}
       >
-        {/* Subtle grid pattern background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b08_1px,transparent_1px),linear-gradient(to_bottom,#1e293b08_1px,transparent_1px)] bg-[size:14px_14px]" />
-        
-        {/* Genre Glow Orb */}
         <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-blue-600/10 blur-2xl" />
 
         <div className="relative z-10 flex flex-col items-center text-center">
@@ -111,11 +145,11 @@ export const GameImage: React.FC<GameImageProps> = ({
 
   return (
     <img
-      src={src}
+      src={activeSrc}
       alt={alt}
       loading="lazy"
       referrerPolicy="no-referrer"
-      onError={() => setHasError(true)}
+      onError={handleError}
       className={className}
     />
   );

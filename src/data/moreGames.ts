@@ -36,10 +36,10 @@ export const MORE_GAMES: Game[] = [
     slug: 'honkai-star-rail',
     description: 'Hop aboard the Astral Express and experience the galaxy\'s infinite wonders. Tactical turn-based combat meets cinematic universe exploration and rich, emotional anime storytelling.',
     shortDescription: 'Space fantasy tactical turn-based RPG with cinematic ultimate moves and interstellar exploration.',
-    coverImage: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80',
-    bannerImage: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1600&q=80',
+    coverImage: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80',
+    bannerImage: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1600&q=80',
     screenshots: [
-      'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=1000&q=80',
     ],
     trailer: '3y_U34fO45A',
@@ -207,7 +207,7 @@ export const MORE_GAMES: Game[] = [
     bannerImage: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1600&q=80',
     screenshots: [
       'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1534423861386-85a16f5d1345?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1000&q=80',
     ],
     genres: ['Strategy', 'Puzzle', 'Action'],
     tags: ['Card Battler', 'Marvel Heroes', 'Fast 3 Min Games', 'Mind Games'],
@@ -235,7 +235,7 @@ export const MORE_GAMES: Game[] = [
     bannerImage: 'https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=1600&q=80',
     screenshots: [
       'https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1000&q=80',
     ],
     genres: ['Strategy', 'Puzzle'],
     tags: ['Card Game', 'Anime TCG', 'Deck Building', 'Ranked Duels'],
