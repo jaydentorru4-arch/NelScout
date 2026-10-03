@@ -10,11 +10,10 @@ const EXTRA_GAMES: Game[] = [
     slug: 'enlisted',
     description: 'A squad-based first-person MMO shooter covering key battles from World War II. Players lead an infantry squad, tank crew, or aircraft pilot simultaneously.',
     shortDescription: 'World War II squad-based FPS where you command AI soldiers alongside other real players.',
-    coverImage: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80',
-    bannerImage: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80',
+    coverImage: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2051620/header.jpg',
+    bannerImage: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2051620/header.jpg',
     screenshots: [
-      'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1000&q=80',
+      'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2051620/header.jpg',
     ],
     genres: ['Shooter', 'Action', 'Strategy'],
     tags: ['WWII', 'Squad Command', 'Combined Arms', 'Realistic Combat'],
@@ -37,11 +36,10 @@ const EXTRA_GAMES: Game[] = [
     slug: 'shatterline',
     description: 'A fierce free-to-play arena FPS with both rogue-like cooperative Expedition modes and frantic competitive PvP combat against crystalline crystalline invaders.',
     shortDescription: 'Fast-paced free FPS featuring rogue-like co-op expeditions and competitive arena modes.',
-    coverImage: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80',
-    bannerImage: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1600&q=80',
+    coverImage: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2087030/header.jpg',
+    bannerImage: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2087030/header.jpg',
     screenshots: [
-      'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=1000&q=80',
+      'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2087030/header.jpg',
     ],
     genres: ['Shooter', 'Action'],
     tags: ['Co-op Roguelike', 'Arena FPS', 'Hero Skills', 'Fast Movement'],
@@ -63,13 +61,12 @@ const EXTRA_GAMES: Game[] = [
     id: 'neverwinter',
     name: 'Neverwinter',
     slug: 'neverwinter',
-    description: 'An action MMORPG based on the acclaimed Dungeons & Dragons fantasy roleplaying game. Epic stories, action combat, and classic roleplaying await those who enter the Forgotten Realms.',
-    shortDescription: 'Free action MMORPG based on Dungeons & Dragons with dynamic combo combat.',
-    coverImage: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
-    bannerImage: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=80',
+    description: 'Explore and defend one of the most beloved cities from the Dungeons & Dragons Forgotten Realms setting as it rises from the ashes of destruction.',
+    shortDescription: 'Free-to-play action MMORPG based on Dungeons & Dragons with active combat and rich quests.',
+    coverImage: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/109600/header.jpg',
+    bannerImage: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/109600/header.jpg',
     screenshots: [
-      'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1000&q=80',
+      'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/109600/header.jpg',
     ],
     genres: ['RPG', 'Action', 'Adventure'],
     tags: ['D&D Lore', 'Action Combat', 'Dungeons', 'Co-op Quests'],
@@ -88,5 +85,13 @@ const EXTRA_GAMES: Game[] = [
   }
 ];
 
-export const ALL_GAMES: Game[] = [...GAMES, ...MORE_GAMES, ...EXTRA_GAMES, ...ADDITIONAL_GAMES];
+// Deduplicate games by id so each game has exactly one verified entry
+const ALL_RAW_GAMES: Game[] = [...GAMES, ...MORE_GAMES, ...EXTRA_GAMES, ...ADDITIONAL_GAMES];
+const seenIds = new Set<string>();
+export const ALL_GAMES: Game[] = ALL_RAW_GAMES.filter(g => {
+  if (seenIds.has(g.id)) return false;
+  seenIds.add(g.id);
+  return true;
+});
+
 export const TOTAL_GAMES_COUNT = ALL_GAMES.length;
