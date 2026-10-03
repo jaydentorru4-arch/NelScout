@@ -29,24 +29,39 @@ import {
   ArrowRight,
   TrendingUp,
   Award,
+  Crosshair,
+  Ghost,
+  Zap,
+  Shield,
+  Sprout,
+  Users,
+  Boxes,
+  Swords,
+  Puzzle,
+  Hammer,
+  Music,
+  Compass,
+  Cpu,
+  Globe,
+  LucideIcon,
 } from 'lucide-react';
 
-const CATEGORIES_LIST: { name: GenreType; icon: string; description: string }[] = [
-  { name: 'Action', icon: '🎮', description: 'Fast reflexes, intense combat and agility' },
-  { name: 'Shooter', icon: '🔫', description: 'Tactical gunplay, arena FPS and hero battles' },
-  { name: 'Horror', icon: '👻', description: 'Spine-chilling jumpscares, entities and survival' },
-  { name: 'Racing', icon: '🏎️', description: 'High-speed circuits, nitro boosts and stunts' },
-  { name: 'RPG', icon: '🧙', description: 'Rich character progression, skill trees and lore' },
-  { name: 'Simulation', icon: '🌱', description: 'Cozy life sims, crafting, towns and pets' },
-  { name: 'Roleplay', icon: '🏠', description: 'Avatar dress up, town exploration and socializing' },
-  { name: 'Sandbox', icon: '🧱', description: 'Limitless creative building and physics fun' },
-  { name: 'Fighting', icon: '🥊', description: 'Brawlers, combos and competitive 1v1 arenas' },
-  { name: 'Puzzle', icon: '🧩', description: 'Brain teasers, deduction and escape challenges' },
-  { name: 'Building', icon: '🏗️', description: 'Architectural freedom and engineering' },
-  { name: 'Party', icon: '🎉', description: 'Wacky multiplayer minigames and laughter' },
-  { name: 'Adventure', icon: '⚔️', description: 'Quests, mystery solving and world exploration' },
-  { name: 'Strategy', icon: '🧠', description: 'Tactical planning, resource economy and chess-like depth' },
-  { name: 'Open World', icon: '🌎', description: 'Expansive horizons with total free roaming' },
+const CATEGORIES_LIST: { name: GenreType; icon: LucideIcon; description: string }[] = [
+  { name: 'Action', icon: Gamepad2, description: 'Fast reflexes, intense combat and agility' },
+  { name: 'Shooter', icon: Crosshair, description: 'Tactical gunplay, arena FPS and hero battles' },
+  { name: 'Horror', icon: Ghost, description: 'Spine-chilling jumpscares, entities and survival' },
+  { name: 'Racing', icon: Zap, description: 'High-speed circuits, nitro boosts and stunts' },
+  { name: 'RPG', icon: Shield, description: 'Rich character progression, skill trees and lore' },
+  { name: 'Simulation', icon: Sprout, description: 'Cozy life sims, crafting, towns and pets' },
+  { name: 'Roleplay', icon: Users, description: 'Avatar dress up, town exploration and socializing' },
+  { name: 'Sandbox', icon: Boxes, description: 'Limitless creative building and physics fun' },
+  { name: 'Fighting', icon: Swords, description: 'Brawlers, combos and competitive 1v1 arenas' },
+  { name: 'Puzzle', icon: Puzzle, description: 'Brain teasers, deduction and escape challenges' },
+  { name: 'Building', icon: Hammer, description: 'Architectural freedom and engineering' },
+  { name: 'Party', icon: Music, description: 'Wacky multiplayer minigames and laughter' },
+  { name: 'Adventure', icon: Compass, description: 'Quests, mystery solving and world exploration' },
+  { name: 'Strategy', icon: Cpu, description: 'Tactical planning, resource economy and chess-like depth' },
+  { name: 'Open World', icon: Globe, description: 'Expansive horizons with total free roaming' },
 ];
 
 export default function App() {
@@ -317,7 +332,7 @@ export default function App() {
 
               {/* Trending Now Horizontal Carousel */}
               <TrendingCarousel
-                title="🔥 TRENDING NOW"
+                title="TRENDING NOW"
                 subtitle="The most scouted games and breakout multiplayer hits this week"
                 games={trendingGames}
                 onPreview={handleOpenPreview}
@@ -327,7 +342,7 @@ export default function App() {
 
               {/* Popular Free Games Horizontal Carousel */}
               <TrendingCarousel
-                title="🟢 POPULAR FREE GAMES"
+                title="POPULAR FREE GAMES"
                 subtitle="100% Free-to-play with zero upfront cost"
                 icon={<Award className="w-5 h-5 text-emerald-400" />}
                 games={freeGamesList}
@@ -338,7 +353,7 @@ export default function App() {
 
               {/* Hidden Gems Carousel */}
               <TrendingCarousel
-                title="💎 HIDDEN GEMS"
+                title="HIDDEN GEMS"
                 subtitle="Underrated community favorites and creative masterpieces"
                 icon={<Gamepad2 className="w-5 h-5 text-indigo-400" />}
                 games={hiddenGems}
@@ -488,6 +503,7 @@ export default function App() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {CATEGORIES_LIST.map((cat) => {
                 const count = ALL_GAMES.filter((g) => g.genres.includes(cat.name)).length;
+                const IconComponent = cat.icon;
                 return (
                   <div
                     key={cat.name}
@@ -495,7 +511,9 @@ export default function App() {
                     className="p-5 rounded-2xl bg-[#0c1322] hover:bg-[#121c32] border border-[#18233c] hover:border-blue-500/50 transition-all cursor-pointer group flex flex-col justify-between"
                   >
                     <div>
-                      <div className="text-3xl mb-3">{cat.icon}</div>
+                      <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-3 text-blue-400 group-hover:bg-blue-500/20 group-hover:scale-105 transition-all">
+                        <IconComponent className="w-5 h-5" />
+                      </div>
                       <h3 className="text-base font-bold text-white group-hover:text-blue-400 font-heading">
                         {cat.name}
                       </h3>
@@ -515,7 +533,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
             <div className="mb-10">
               <h1 className="text-3xl sm:text-4xl font-black text-white font-heading tracking-tight mb-2">
-                🔥 TRENDING & RISING
+                TRENDING & RISING
               </h1>
               <p className="text-slate-400 text-sm">
                 Real-time popular games dominating the online community right now.
@@ -523,7 +541,7 @@ export default function App() {
             </div>
 
             <TrendingCarousel
-              title="🔥 Trending Now"
+              title="Trending Now"
               subtitle="The most actively played online titles"
               games={trendingGames}
               onPreview={handleOpenPreview}
@@ -532,7 +550,7 @@ export default function App() {
             />
 
             <TrendingCarousel
-              title="⚡ Rising Games"
+              title="Rising Games"
               subtitle="Fast-growing titles gaining massive momentum"
               games={risingGames}
               onPreview={handleOpenPreview}
@@ -541,7 +559,7 @@ export default function App() {
             />
 
             <TrendingCarousel
-              title="💎 Hidden Gems"
+              title="Hidden Gems"
               subtitle="Critically acclaimed games you might have missed"
               games={hiddenGems}
               onPreview={handleOpenPreview}

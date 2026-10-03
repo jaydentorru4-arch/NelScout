@@ -117,10 +117,10 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
           onChange={(e) => setSortBy(e.target.value as FilterState['sortBy'])}
           className="w-full py-2 px-3 rounded-xl bg-[#080d17] border border-[#1d2b48] text-xs font-medium text-slate-200 focus:outline-none focus:border-blue-500 cursor-pointer"
         >
-          <option value="trending">🔥 Trending & Popular</option>
-          <option value="rating">⭐ Highest Rated</option>
-          <option value="newest">🕒 Release Date (Newest)</option>
-          <option value="name_asc">🔤 Name (A - Z)</option>
+          <option value="trending">Trending & Popular</option>
+          <option value="rating">Highest Rated</option>
+          <option value="newest">Release Date (Newest)</option>
+          <option value="name_asc">Name (A - Z)</option>
         </select>
       </div>
 

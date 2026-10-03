@@ -101,7 +101,7 @@ export const SurpriseMeModal: React.FC<SurpriseMeModalProps> = ({
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-xs font-mono font-bold text-emerald-400">
-                  {selectedGame.priceType === 'free' ? '🟢 FREE TO PLAY' : 'PAID'}
+                  {selectedGame.priceType === 'free' ? 'FREE TO PLAY' : 'PAID'}
                 </span>
                 <span className="text-slate-600">·</span>
                 <span className="text-xs text-slate-400 capitalize">

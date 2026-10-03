@@ -157,7 +157,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Search className="w-4 h-4 text-blue-400 group-hover:text-blue-300" />
             <span className="hidden md:inline font-medium">Search</span>
             <kbd className="hidden xl:inline text-[10px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded border border-slate-700">
-              ⌘K
+              Ctrl+K
             </kbd>
           </button>
 
@@ -254,7 +254,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-md cursor-pointer"
             >
               <Dices className="w-4 h-4" />
-              <span>🎲 Surprise Me</span>
+              <span>Surprise Me</span>
             </button>
 
             <button

@@ -234,7 +234,7 @@ export const GameDetailPage: React.FC<GameDetailPageProps> = ({
               <div className="flex justify-between py-2 border-b border-slate-800/80 text-sm">
                 <span className="text-slate-400">Rating</span>
                 <span className="font-semibold text-amber-400 font-mono">
-                  ⭐ {game.rating || 4.7} / 5.0
+                  {game.rating || 4.7} / 5.0
                 </span>
               </div>
 
